@@ -2,14 +2,12 @@ package domein;
 
 public class DomeinController {
 
-    // tag::attributenEnCtor[]
     private Spel spel;
     private SpelerRepository spelerRepository;  //<1>
 
     public DomeinController() {
         spelerRepository = new SpelerRepository();  //<2>
     }
-    // end::attributenEnCtor[]
 
 	public void startNieuwSpel() { setSpel(new Spel()); }
 
@@ -21,12 +19,10 @@ public class DomeinController {
 	
 	public boolean isEindeSpel(){ return spel.isEindeSpel(); }
 
-    // tag::registreer[]
     public void registreer(String naam, String voornaam, String email, int geboortejaar, String wachtwoord, String bevestigingWachtwoord){
         Speler s = new Speler(naam, voornaam, email, geboortejaar, wachtwoord, bevestigingWachtwoord); //<1>
         spelerRepository.voegSpelerToe(s);  //<2>
     }
-    // end::registreer[]
 	
 	private void setSpel(Spel spel) { this.spel = spel;}
 }
