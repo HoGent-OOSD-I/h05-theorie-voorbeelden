@@ -5,7 +5,7 @@ import domein.DomeinController;
 
 public class StartUp {
 
-	public static void main(String[] args) {	
+	void main() {
 		// creatie aanspreekpunt domeinlaag
 		DomeinController dc = new DomeinController();
 		// creatie applicatie
@@ -14,6 +14,6 @@ public class StartUp {
 		da.startDobbelspelApplicatie();
 		
 		// kan ook in 1 instructie:
-		// new DobbelsteenApplicatie(new DomeinController()).speelSpel();
+		// new DobbelsteenApplicatie(new DomeinController()).startDobbelspelApplicatie();
 	}
 }

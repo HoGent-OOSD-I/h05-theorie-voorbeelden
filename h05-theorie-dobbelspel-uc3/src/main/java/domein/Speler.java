@@ -12,7 +12,7 @@ public class Speler {
 
     private static final String DEFAULT_STRING = "onbekend";
     private static final double DEFAULT_KREDIET = 5.0;
-    private static final int HUIDIG_JAAR = 2025;    // momenteel enige oplossing als we de klasse Speler ook zouden willen testen.
+    private static final int HUIDIG_JAAR = 2026;    // momenteel enige oplossing als we de klasse Speler ook zouden willen testen.
     private static final int MINIMUM_LEEFTIJD = 18;
 
     public Speler(String naam, String voornaam, String email, int geboortejaar, String wachtwoord, String bevestigingWachtwoord) {

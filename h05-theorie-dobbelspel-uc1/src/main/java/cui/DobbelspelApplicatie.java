@@ -2,56 +2,42 @@ package cui;
 
 import domein.DomeinController;
 
-import java.util.Scanner;
-
 public class DobbelspelApplicatie {
-    private Scanner invoer = new Scanner(System.in);
     private DomeinController dc;
 	
 	public DobbelspelApplicatie(DomeinController dc) {
 		this.dc = dc;
 	}
 
-    public void startDobbelspel(){
-        String[] menu = {"Registreer speler", "Speel spel", "Stoppen"};
-        int keuze = invoerKeuze(menu);
-        while (keuze != menu.length)
-        {
+    public void startDobbelspelApplicatie(){
+        String[] menu = {"Stoppen", "Registreer speler", "Meld aan", "Speel spel"};
+        int keuze = kiesUitMenu(menu);
+        while (keuze != 0) {
             switch (keuze) {
                 case 1 -> registreerSpeler();
-                case 2 -> speelSpel();
+                case 2 -> meldAan();
+                case 3 -> speelSpel();
             }
-            System.out.println();
-            keuze = invoerKeuze(menu);
+            IO.println();
+            keuze = kiesUitMenu(menu);
         }
-        System.out.println("Tot volgende keer!");
+        IO.println("Tot volgende keer!");
     }
 
-    private int invoerKeuze(String[] menu)
-    {
+    private int kiesUitMenu(String[] menu) {
+        IO.println("Maak uw keuze: ");
+        for(int i = 0; i<menu.length; i++){
+            IO.println(String.format("%d. %s", i, menu[i]));
+        }
+
+        boolean isJuist;
         int keuze;
-        boolean isGeldig;
-        do {
-            for(int nrMenu = 0; nrMenu < menu.length; nrMenu++){
-                System.out.printf("%d. %s%n", nrMenu+1, menu[nrMenu]);
-            }
-            System.out.printf("Geef je keuze (%d-%d): ", 1, menu.length);
-            keuze = invoer.nextInt();
-            isGeldig = keuze >= 1 && keuze <= menu.length;
-        } while (!isGeldig);
+        do{
+            keuze = Integer.parseInt(IO.readln(String.format("Kies een optie tussen 0 en %d uit bovenstaand menu: ", menu.length-1)));
+
+            isJuist = keuze >= 0 && keuze < menu.length;
+        }while(!isJuist);
         return keuze;
-    }
-
-    private void registreerSpeler() {
-        invoer.nextLine();  // buffer voor inlezen tekst na getal
-        String voornaam = leesTekst("voornaam");
-        String naam = leesTekst("naam");
-        String email = leesTekst("email");
-    }
-
-    private String leesTekst(String naam) {
-        System.out.printf("Geef %s in: ", naam);
-        return invoer.nextLine();
     }
 
     private void speelSpel() {
@@ -59,8 +45,16 @@ public class DobbelspelApplicatie {
 		while(!dc.isEindeSpel()) {
 			dc.rolDobbelstenen();
 			
-			System.out.printf("Aantal ogen van de worp: %d.%n", dc.geefAantalOgenWorp());
+			IO.println(String.format("Aantal ogen van de worp: %d.", dc.geefAantalOgenWorp()));
 		}
-		System.out.printf("Score: %d.%n", dc.geefScore());		
+        IO.println(String.format("Score: %d.", dc.geefScore()));
 	}
+
+    private void registreerSpeler() {
+        IO.println("Deze optie wordt uitgewerkt in UC2.");
+    }
+
+    private void meldAan() {
+        IO.println("Deze optie wordt uitgewerkt in UC3.");
+    }
 }
