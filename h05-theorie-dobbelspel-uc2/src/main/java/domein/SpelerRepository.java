@@ -12,14 +12,11 @@ public class SpelerRepository {
     }
 
     public void voegSpelerToe(Speler s) {
-        boolean emailInGebruik = false;
-
         for(Speler speler: spelers){    //<3>
             if(speler.getEmail().equals(s.getEmail()))
-                emailInGebruik = true;
+                throw new IllegalArgumentException("Email is al in gebruik!");      //<4>
         }
 
-        if(!emailInGebruik)     //<4>
-            spelers.add(s);
+        spelers.add(s);     //<5>
     }
 }

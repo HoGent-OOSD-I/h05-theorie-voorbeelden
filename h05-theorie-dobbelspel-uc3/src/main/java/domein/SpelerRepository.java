@@ -12,15 +12,12 @@ public class SpelerRepository {
     }
 
     public void voegSpelerToe(Speler s) {
-        boolean emailInGebruik = false;
-
         for(Speler speler: spelers){
             if(speler.getEmail().equals(s.getEmail()))
-                emailInGebruik = true;
+                throw new IllegalArgumentException("Email is al in gebruik!");
         }
 
-        if(!emailInGebruik)
-            spelers.add(s);
+        spelers.add(s);
     }
 
     public Speler geefSpeler(String email, String wachtwoord){
@@ -28,6 +25,6 @@ public class SpelerRepository {
             if(speler.getEmail().equals(email) && speler.getWachtwoord().equals(wachtwoord))
                 return speler;
         }
-        return null;
+        throw new IllegalArgumentException("Geen gebruiker gevonden met deze combinatie van email & wachtwoord!");
     }
 }

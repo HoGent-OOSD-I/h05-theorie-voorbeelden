@@ -70,7 +70,7 @@ public class DobbelspelApplicatie {
 
         dc.registreer(naam, voornaam, email, geboortejaar, wachtwoord, bevestigingWachtwoord);
 
-        IO.println("Speler is geregistreerd als het e-mailadres nog niet in gebruik was!");
+        IO.println("Speler is geregistreerd!");
     }
 
     private int leesGeboortejaar() {

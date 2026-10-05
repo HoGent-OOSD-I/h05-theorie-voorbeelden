@@ -63,13 +63,13 @@ public class DobbelspelApplicatie {
             bevestigingWachtwoord = leesTekst("bevestiging wachtwoord");
 
             wachtwoordenZijnGelijk = wachtwoord.equals(bevestigingWachtwoord);
-            if(!wachtwoordenZijnGelijk)
+            if(!wachtwoordenZijnGelijk)     // controle mag gebeuren in de applicatie om de gebruiksvriendelijkheid te vergroten, maar MOET sowieso gebeuren in de domeinlaag.
                 IO.println("Wachtwoord en bevestiging wachtwoord moeten gelijk zijn!");
         }while(!wachtwoordenZijnGelijk);
 
         dc.registreer(naam, voornaam, email, geboortejaar, wachtwoord, bevestigingWachtwoord);
 
-        IO.println("Speler is geregistreerd als het e-mailadres nog niet in gebruik was!");
+        IO.println("Speler is geregistreerd!");
     }
 
     private int leesGeboortejaar() {

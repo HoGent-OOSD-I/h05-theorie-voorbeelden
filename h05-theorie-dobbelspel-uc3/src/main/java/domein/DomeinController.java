@@ -32,9 +32,9 @@ public class DomeinController {
     }
 
     public SpelerDTO geefSpeler(){
-        if(speler != null)  //<2>
-            return new SpelerDTO(speler.getNaam(), speler.getVoornaam(), speler.getKrediet(), speler.isAdminrechten());
-        return null;
+        if(speler == null)  //<2>
+            throw new IllegalArgumentException("Nog geen aangemelde speler!");
+        return new SpelerDTO(speler.getNaam(), speler.getVoornaam(), speler.getKrediet(), speler.isAdminrechten());
     }
 	
 	private void setSpel(Spel spel) { this.spel = spel;}
